@@ -1,7 +1,11 @@
 const express = require('express')
 const app = express()
 const sqlite3 = require('sqlite3')
+const path = require('path')
+
 const dbPath = "app/db/database.sqlite3"
+
+app.use(express.static(path.join(__dirname, 'public')))
 
 app.get('/api/v1/users', (req, res) => {
     const db = new sqlite3.Database(dbPath)
